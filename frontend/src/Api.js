@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = process.env.BROKER_URL;
+axios.defaults.baseURL = process.env.REACT_APP_BROKER_URL;
 
-export const ping = () => {
-  axios.post('/');
-};
+export const root = () => axios.post('/');
