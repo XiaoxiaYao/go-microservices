@@ -23,7 +23,7 @@ function App() {
       const { data } = await root();
       setReceivedData(JSON.stringify(data));
     } catch (error) {
-      console.log(error);
+      setReceivedData(JSON.stringify(error));
     }
   };
 
