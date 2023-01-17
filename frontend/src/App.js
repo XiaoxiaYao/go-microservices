@@ -26,7 +26,7 @@ function App() {
   const handleTestAuthenticate = async () => {
     const payload = {
       email: 'admin@example.com',
-      password: 'v1erysecret',
+      password: 'verysecret',
     };
     setSentData(JSON.stringify(payload, null, 4));
     try {
