@@ -3,3 +3,4 @@ brokerApp
 authApp
 db-data
 loggerServiceApp
+mailerApp
