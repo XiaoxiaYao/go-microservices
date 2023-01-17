@@ -12,3 +12,14 @@ export const authenticate = ({ email, password }) =>
       password,
     },
   });
+
+export const sendMail = ({ from, to, subject, message }) =>
+  axios.post('/handle', {
+    action: 'mail',
+    mail: {
+      from,
+      to,
+      subject,
+      message,
+    },
+  });

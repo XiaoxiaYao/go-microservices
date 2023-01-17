@@ -7,7 +7,7 @@ import {
   Box,
   Grid,
 } from '@mui/material';
-import { authenticate, root } from './Api';
+import { authenticate, root, sendMail } from './Api';
 
 function App() {
   const [sentData, setSentData] = useState(null);
@@ -37,6 +37,22 @@ function App() {
     }
   };
 
+  const handleTestSendMail = async () => {
+    const payload = {
+      from: 'me@example.com',
+      to: 'you@example.com',
+      subject: 'a letter',
+      message: 'love you',
+    };
+    setSentData(JSON.stringify(payload, null, 4));
+    try {
+      const { data } = await sendMail(payload);
+      setReceivedData(JSON.stringify(data, null, 4));
+    } catch (error) {
+      setReceivedData(JSON.stringify(error, null, 4));
+    }
+  };
+
   return (
     <>
       <CssBaseline />
@@ -49,6 +65,9 @@ function App() {
         </Button>
         <Button variant="contained" onClick={handleTestAuthenticate}>
           Test authenticate
+        </Button>
+        <Button variant="contained" onClick={handleTestSendMail}>
+          Test send mail
         </Button>
         <Box>Output shows here...</Box>
         <Grid container spacing={2}>
