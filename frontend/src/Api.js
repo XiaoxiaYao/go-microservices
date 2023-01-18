@@ -23,3 +23,12 @@ export const sendMail = ({ from, to, subject, message }) =>
       message,
     },
   });
+
+export const log = ({ name, data }) =>
+  axios.post('/handle', {
+    action: 'log',
+    log: {
+      name,
+      data,
+    },
+  });
