@@ -32,3 +32,12 @@ export const log = ({ name, data }) =>
       data,
     },
   });
+
+export const logGrpc = ({ name, data }) =>
+  axios.post('/log-grpc', {
+    action: 'log',
+    log: {
+      name,
+      data,
+    },
+  });

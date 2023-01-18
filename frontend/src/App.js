@@ -7,7 +7,7 @@ import {
   Box,
   Grid,
 } from '@mui/material';
-import { authenticate, root, sendMail, log } from './Api';
+import { authenticate, root, sendMail, log, logGrpc } from './Api';
 
 function App() {
   const [sentData, setSentData] = useState(null);
@@ -67,6 +67,20 @@ function App() {
     }
   };
 
+  const handleTestGrpc = async () => {
+    const payload = {
+      name: 'grpc',
+      data: 'grpc',
+    };
+    setSentData(JSON.stringify(payload, null, 4));
+    try {
+      const { data } = await logGrpc(payload);
+      setReceivedData(JSON.stringify(data, null, 4));
+    } catch (error) {
+      setReceivedData(JSON.stringify(error, null, 4));
+    }
+  };
+
   return (
     <>
       <CssBaseline />
@@ -85,6 +99,9 @@ function App() {
         </Button>
         <Button variant="contained" onClick={handleTestSendMail}>
           Test send mail
+        </Button>
+        <Button variant="contained" onClick={handleTestGrpc}>
+          Test grpc
         </Button>
         <Box>Output shows here...</Box>
         <Grid container spacing={2}>
