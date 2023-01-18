@@ -23,3 +23,8 @@
 Less down time
 `docker service scale myapp_mail-service=2`
 `docker service update --image michaelyaonz/mail-service:1.0.1 yapp_mail-service`
+
+# Stop swarm
+
+`docker stack rm myapp`
+`docker swarm leave --force`
