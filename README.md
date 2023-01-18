@@ -16,3 +16,10 @@
 # Scale service
 
 `docker service scale myapp_listener-service=3`
+
+# Update service
+
+`docker build -f mail-service.dockerfile -t michaelyaonz/mail-service:1.0.1 .`
+Less down time
+`docker service scale myapp_mail-service=2`
+`docker service update --image michaelyaonz/mail-service:1.0.1 yapp_mail-service`
